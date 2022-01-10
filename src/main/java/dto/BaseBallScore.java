@@ -15,7 +15,7 @@ public class BaseBallScore {
     public String toString() {
         String result = "";
 
-        if(strikeCnt == 0 || ballCnt == 0){
+        if(strikeCnt == 0 && ballCnt == 0){
             return "낫싱";
         }
 
@@ -27,6 +27,6 @@ public class BaseBallScore {
             result += ballCnt + "볼 ";
         }
 
-        return result;
+        return result.strip();
     }
 }
