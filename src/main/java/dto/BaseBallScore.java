@@ -29,4 +29,12 @@ public class BaseBallScore {
 
         return result.strip();
     }
+
+    public int getStrikeCnt() {
+        return strikeCnt;
+    }
+
+    public int getBallCnt() {
+        return ballCnt;
+    }
 }
