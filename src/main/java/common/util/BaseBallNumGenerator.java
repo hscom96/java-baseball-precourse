@@ -30,20 +30,25 @@ public class BaseBallNumGenerator {
         return result.toString();
     }
 
-    private static void generateInRange(StringBuilder num, int depth, Set<Integer> duplicate) {
+    private static StringBuilder generateInRange(StringBuilder num, int depth, Set<Integer> duplicate) {
         if (depth == LENGTH_NUM) {
-            return;
+            return num;
         }
 
         int randomNum = Randoms.pickNumberInRange(START_EACH_NUM, END_EACH_NUM);
 
         if(duplicate.contains(randomNum)){
-            return;
+            return null;
         }
 
         num.append(randomNum);
         duplicate.add(randomNum);
 
-        generateInRange(num, depth + 1, duplicate);
+        StringBuilder result = null;
+        while (result == null){
+            result = generateInRange(num, depth + 1, duplicate);
+        }
+
+        return result;
     }
 }
