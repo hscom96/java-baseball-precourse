@@ -6,9 +6,15 @@ public class BaseBallScore {
 
     private final int ballCnt;
 
+    private static final int SUCCESS_STRIKE_CNT = 3;
+
     public BaseBallScore(int strikeCnt, int ballCnt) {
         this.strikeCnt = strikeCnt;
         this.ballCnt = ballCnt;
+    }
+
+    public boolean isSuccess(){
+        return strikeCnt == SUCCESS_STRIKE_CNT;
     }
 
     @Override
