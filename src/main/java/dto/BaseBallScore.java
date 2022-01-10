@@ -1,5 +1,8 @@
 package dto;
 
+/**
+ * 숫자야구 점수 클래스
+ */
 public class BaseBallScore {
 
     private final int strikeCnt;
@@ -13,7 +16,7 @@ public class BaseBallScore {
         this.ballCnt = ballCnt;
     }
 
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return strikeCnt == SUCCESS_STRIKE_CNT;
     }
 
@@ -21,15 +24,15 @@ public class BaseBallScore {
     public String toString() {
         String result = "";
 
-        if(strikeCnt == 0 && ballCnt == 0){
+        if (strikeCnt == 0 && ballCnt == 0) {
             return "낫싱";
         }
 
-        if(strikeCnt > 0){
+        if (strikeCnt > 0) {
             result += strikeCnt + "스트라이크 ";
         }
 
-        if(ballCnt > 0){
+        if (ballCnt > 0) {
             result += ballCnt + "볼 ";
         }
 

@@ -30,14 +30,15 @@ public class BaseBallNumGenerator {
         return result.toString();
     }
 
-    private static StringBuilder generateInRange(StringBuilder num, int depth, Set<Integer> duplicate) {
+    private static StringBuilder generateInRange(StringBuilder num, int depth,
+        Set<Integer> duplicate) {
         if (depth == LENGTH_NUM) {
             return num;
         }
 
         int randomNum = Randoms.pickNumberInRange(START_EACH_NUM, END_EACH_NUM);
 
-        if(duplicate.contains(randomNum)){
+        if (duplicate.contains(randomNum)) {
             return null;
         }
 
@@ -45,7 +46,7 @@ public class BaseBallNumGenerator {
         duplicate.add(randomNum);
 
         StringBuilder result = null;
-        while (result == null){
+        while (result == null) {
             result = generateInRange(num, depth + 1, duplicate);
         }
 
