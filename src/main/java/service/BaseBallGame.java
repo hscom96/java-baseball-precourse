@@ -15,8 +15,7 @@ public class BaseBallGame {
         while (true) {
             playGame();
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String startNum = Console.readLine();
+            String startNum = inputStart();
             if (startNum.equals("2")) {
                 break;
             }
@@ -48,10 +47,9 @@ public class BaseBallGame {
      * @return 정답 여부 반환
      */
     private GameStatus playRound(String randomNum) {
-        System.out.print("숫자를 입력해 주세요 : ");
-        String inputNum = Console.readLine();
+        String inputBallNum = inputBallNum();
 
-        BaseBallScore score = BaseBallCalculator.calScore(randomNum, inputNum);
+        BaseBallScore score = BaseBallCalculator.calScore(randomNum, inputBallNum);
 
         System.out.println(score);
 
@@ -60,6 +58,46 @@ public class BaseBallGame {
         }
 
         return GameStatus.FAIL;
+    }
+
+    private String inputStart(){
+        String startNum;
+        while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            try{
+                startNum = Console.readLine();
+                int start = Integer.parseInt(startNum);
+
+                if (startNum.length() != 3 && (start == 1 || start == 2))
+                    break;
+
+                System.out.println("[ERROR]");
+            }catch (Exception e){
+                System.out.println("[ERROR]");
+            }
+        }
+        return startNum;
+    }
+
+    private String inputBallNum(){
+        String ballNum;
+        while(true) {
+            System.out.print("숫자를 입력해 주세요 : ");
+
+            try{
+                ballNum = Console.readLine();
+                int start = Integer.parseInt(ballNum);
+
+                if (ballNum.length() != 3 && (100 <= start && start <= 999))
+                    break;
+
+                System.out.println("[ERROR]");
+            }catch (Exception e){
+                System.out.println("[ERROR]");
+            }
+        }
+        return ballNum;
     }
 
     private enum GameStatus {
