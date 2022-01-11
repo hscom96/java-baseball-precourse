@@ -26,6 +26,9 @@ public class BaseBallCalculator {
         return new BaseBallScore(strikeCnt, ballCnt);
     }
 
+    /**
+     * 스트라이크 숫자 계산
+     */
     private static int countStrike(String randomNum, String userInputNum) {
         int strikeCnt = 0;
 
@@ -41,6 +44,9 @@ public class BaseBallCalculator {
         return strikeCnt;
     }
 
+    /**
+     * 볼 숫자 계산
+     */
     private static int countBall(String randomNum, String userInputNum) {
         int ballCnt = 0;
         Set<String> ball = new HashSet<>();

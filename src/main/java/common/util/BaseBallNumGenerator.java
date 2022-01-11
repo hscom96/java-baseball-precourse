@@ -13,8 +13,8 @@ public class BaseBallNumGenerator {
     }
 
     private static final int LENGTH_NUM = 3;
-    private static final int START_EACH_NUM = 1;
-    private static final int END_EACH_NUM = 9;
+    private static final int MIN_EACH_NUM = 1;
+    private static final int MAX_EACH_NUM = 9;
 
     /**
      * 숫자야구 랜덤한 숫자 생성한다.
@@ -36,7 +36,7 @@ public class BaseBallNumGenerator {
             return num;
         }
 
-        int randomNum = Randoms.pickNumberInRange(START_EACH_NUM, END_EACH_NUM);
+        int randomNum = Randoms.pickNumberInRange(MIN_EACH_NUM, MAX_EACH_NUM);
 
         if (duplicate.contains(randomNum)) {
             return null;
