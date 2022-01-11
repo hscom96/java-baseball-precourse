@@ -3,6 +3,7 @@ package service;
 import common.util.BaseBallCalculator;
 import common.util.BaseBallNumGenerator;
 import dto.BaseBallScore;
+import dto.Score;
 import nextstep.utils.Console;
 
 /**
@@ -47,7 +48,7 @@ public class BaseBallGame {
     private GameStatus playRound(String randomNum) {
         String inputBallNum = inputBallNum();
 
-        BaseBallScore score = BaseBallCalculator.calScore(randomNum, inputBallNum);
+        Score score = BaseBallCalculator.calScore(randomNum, inputBallNum);
 
         System.out.println(score);
 

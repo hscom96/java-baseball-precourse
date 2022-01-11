@@ -3,7 +3,7 @@ package dto;
 /**
  * 숫자야구 점수 클래스
  */
-public class BaseBallScore {
+public class BaseBallScore implements Score{
 
     private final int strikeCnt;
 
