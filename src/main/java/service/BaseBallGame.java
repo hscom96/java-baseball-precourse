@@ -16,7 +16,7 @@ public class BaseBallGame {
             playGame();
 
             String startNum = inputStart();
-            if (startNum.equals("2")) {
+            if ("2".equals(startNum)) {
                 break;
             }
         }
@@ -27,7 +27,6 @@ public class BaseBallGame {
      */
     private void playGame() {
         String randomNum = BaseBallNumGenerator.generate();
-        System.out.println("origin: " + randomNum);
 
         while (true) {
             GameStatus gameStatus = playRound(randomNum);
@@ -65,17 +64,12 @@ public class BaseBallGame {
         while(true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            try{
-                startNum = Console.readLine();
-                int start = Integer.parseInt(startNum);
+            startNum = Console.readLine();
 
-                if (startNum.length() != 3 && (start == 1 || start == 2))
-                    break;
+            if (startNum.length() == 1)
+                break;
 
-                System.out.println("[ERROR]");
-            }catch (Exception e){
-                System.out.println("[ERROR]");
-            }
+            System.out.println("[ERROR]");
         }
         return startNum;
     }
@@ -85,17 +79,12 @@ public class BaseBallGame {
         while(true) {
             System.out.print("숫자를 입력해 주세요 : ");
 
-            try{
-                ballNum = Console.readLine();
-                int start = Integer.parseInt(ballNum);
+            ballNum = Console.readLine();
 
-                if (ballNum.length() != 3 && (100 <= start && start <= 999))
-                    break;
+            if (ballNum.length() == 3)
+                break;
 
-                System.out.println("[ERROR]");
-            }catch (Exception e){
-                System.out.println("[ERROR]");
-            }
+            System.out.println("[ERROR]");
         }
         return ballNum;
     }

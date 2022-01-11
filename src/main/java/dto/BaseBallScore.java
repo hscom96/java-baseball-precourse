@@ -36,7 +36,7 @@ public class BaseBallScore {
             result += ballCnt + "볼 ";
         }
 
-        return result.strip();
+        return result.trim();
     }
 
     @Override
