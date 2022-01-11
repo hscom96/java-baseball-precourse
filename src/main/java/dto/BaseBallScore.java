@@ -39,6 +39,25 @@ public class BaseBallScore {
         return result.strip();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof BaseBallScore)) {
+            return false;
+        }
+        BaseBallScore score = (BaseBallScore) o;
+        return score.strikeCnt == strikeCnt && score.ballCnt == ballCnt;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Integer.hashCode(strikeCnt);
+        result += 31 * result + Integer.hashCode(ballCnt);
+        return result;
+    }
+
     public int getStrikeCnt() {
         return strikeCnt;
     }
