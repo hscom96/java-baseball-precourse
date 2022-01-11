@@ -77,7 +77,7 @@ public class BaseBallGame {
                 System.out.println("[ERROR]");
                 inputReStart();
             }
-        }catch (NoSuchElementException | IllegalStateException ex){
+        }catch (NoSuchElementException | IllegalStateException | NumberFormatException ex){
             System.out.println("[ERROR]");
             inputReStart();
         }
@@ -86,18 +86,23 @@ public class BaseBallGame {
     }
 
     private String inputBallNum(){
-        String ballNum;
-        while(true) {
+        String ballInput = "";
+
+        try{
             System.out.print("숫자를 입력해 주세요 : ");
+            ballInput = Console.readLine();
+            int ballNum = Integer.parseInt(ballInput);
 
-            ballNum = Console.readLine();
-
-            if (ballNum.length() == 3)
-                break;
-
+            if (ballInput.length() != 3 || !(100 <= ballNum && ballNum <= 999)){
+                System.out.println("[ERROR]");
+                inputBallNum();
+            }
+        }catch (NoSuchElementException | IllegalStateException | NumberFormatException ex){
             System.out.println("[ERROR]");
+            inputBallNum();
         }
-        return ballNum;
+
+        return ballInput;
     }
 
     private enum GameStatus {
