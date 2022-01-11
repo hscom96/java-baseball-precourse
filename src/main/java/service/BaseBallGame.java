@@ -3,7 +3,6 @@ package service;
 import common.util.BaseBallCalculator;
 import common.util.BaseBallNumGenerator;
 import dto.BaseBallScore;
-import java.util.NoSuchElementException;
 import nextstep.utils.Console;
 
 /**
@@ -41,7 +40,7 @@ public class BaseBallGame {
     }
 
     /**
-     * 단일 게임 속 하나의 라운드 실행.
+     * 단일 게임 안에서 하나의 라운드 실행.
      * (주어진 숫자에 대한 사용자 입력을 받고 정답 여부 반환)
      *
      * @param randomNum 맞추고자 하는 숫자
@@ -69,7 +68,7 @@ public class BaseBallGame {
             startInput = Console.readLine();
 
             verifyInputReStart(startInput);
-        }catch (NoSuchElementException | IllegalStateException | IllegalArgumentException ex){
+        }catch (IllegalStateException | IllegalArgumentException ex){
             System.out.println("[ERROR]");
             inputReStart();
         }
@@ -93,7 +92,7 @@ public class BaseBallGame {
             ballInput = Console.readLine();
 
             verifyInputBallNum(ballInput);
-        }catch (NoSuchElementException | IllegalStateException | IllegalArgumentException ex){
+        }catch (IllegalStateException | IllegalArgumentException ex){
             System.out.println("[ERROR]");
             inputBallNum();
         }
@@ -104,7 +103,7 @@ public class BaseBallGame {
     private void verifyInputBallNum(String ballInput){
         int ballNum = Integer.parseInt(ballInput);
 
-        if (ballInput.length() != 3 || !(100 <= ballNum && ballNum <= 999)){
+        if (ballInput.length() != 3 || !(111 <= ballNum && ballNum <= 999)){
             throw new IllegalArgumentException();
         }
     }
