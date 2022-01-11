@@ -16,13 +16,11 @@ public class BaseBallGame {
      * 숫자야구 게임 실행
      */
     public void play() {
-        while (true) {
-            playGame();
+        playGame();
 
-            String startNum = inputReStart();
-            if ("2".equals(startNum)) {
-                break;
-            }
+        String startNum = inputReStart();
+        if ("1".equals(startNum)) {
+            play();
         }
     }
 
@@ -31,7 +29,6 @@ public class BaseBallGame {
      */
     private void playGame() {
         String randomNum = BaseBallNumGenerator.generate();
-        System.out.println("origin: " + randomNum);
 
         while (true) {
             GameStatus gameStatus = playRound(randomNum);
@@ -69,20 +66,23 @@ public class BaseBallGame {
 
         try{
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
             startInput = Console.readLine();
-            int startNum = Integer.parseInt(startInput);
 
-            if (startInput.length() != 1 || !(startNum == 1 || startNum == 2)){
-                System.out.println("[ERROR]");
-                inputReStart();
-            }
-        }catch (NoSuchElementException | IllegalStateException | NumberFormatException ex){
+            verifyInputReStart(startInput);
+        }catch (NoSuchElementException | IllegalStateException | IllegalArgumentException ex){
             System.out.println("[ERROR]");
             inputReStart();
         }
 
         return startInput;
+    }
+
+    private void verifyInputReStart(String startInput){
+        int startNum = Integer.parseInt(startInput);
+
+        if (startInput.length() != 1 || !(startNum == 1 || startNum == 2)){
+            throw new IllegalArgumentException();
+        }
     }
 
     private String inputBallNum(){
@@ -91,18 +91,22 @@ public class BaseBallGame {
         try{
             System.out.print("숫자를 입력해 주세요 : ");
             ballInput = Console.readLine();
-            int ballNum = Integer.parseInt(ballInput);
 
-            if (ballInput.length() != 3 || !(100 <= ballNum && ballNum <= 999)){
-                System.out.println("[ERROR]");
-                inputBallNum();
-            }
-        }catch (NoSuchElementException | IllegalStateException | NumberFormatException ex){
+            verifyInputBallNum(ballInput);
+        }catch (NoSuchElementException | IllegalStateException | IllegalArgumentException ex){
             System.out.println("[ERROR]");
             inputBallNum();
         }
 
         return ballInput;
+    }
+
+    private void verifyInputBallNum(String ballInput){
+        int ballNum = Integer.parseInt(ballInput);
+
+        if (ballInput.length() != 3 || !(100 <= ballNum && ballNum <= 999)){
+            throw new IllegalArgumentException();
+        }
     }
 
     private enum GameStatus {
