@@ -2,7 +2,6 @@ package service;
 
 import common.util.BaseBallCalculator;
 import common.util.BaseBallNumGenerator;
-import dto.BaseBallScore;
 import dto.Score;
 import nextstep.utils.Console;
 
