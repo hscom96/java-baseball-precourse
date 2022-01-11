@@ -3,6 +3,7 @@ package service;
 import common.util.BaseBallCalculator;
 import common.util.BaseBallNumGenerator;
 import dto.BaseBallScore;
+import java.util.NoSuchElementException;
 import nextstep.utils.Console;
 
 /**
@@ -11,11 +12,14 @@ import nextstep.utils.Console;
  */
 public class BaseBallGame {
 
+    /**
+     * 숫자야구 게임 실행
+     */
     public void play() {
         while (true) {
             playGame();
 
-            String startNum = inputStart();
+            String startNum = inputReStart();
             if ("2".equals(startNum)) {
                 break;
             }
@@ -27,6 +31,7 @@ public class BaseBallGame {
      */
     private void playGame() {
         String randomNum = BaseBallNumGenerator.generate();
+        System.out.println("origin: " + randomNum);
 
         while (true) {
             GameStatus gameStatus = playRound(randomNum);
@@ -39,7 +44,7 @@ public class BaseBallGame {
     }
 
     /**
-     * 게임 속 하나의 라운드 실행.
+     * 단일 게임 속 하나의 라운드 실행.
      * (주어진 숫자에 대한 사용자 입력을 받고 정답 여부 반환)
      *
      * @param randomNum 맞추고자 하는 숫자
@@ -59,19 +64,25 @@ public class BaseBallGame {
         return GameStatus.FAIL;
     }
 
-    private String inputStart(){
-        String startNum;
-        while(true) {
+    private String inputReStart(){
+        String startInput = "";
+
+        try{
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            startNum = Console.readLine();
+            startInput = Console.readLine();
+            int startNum = Integer.parseInt(startInput);
 
-            if (startNum.length() == 1)
-                break;
-
+            if (startInput.length() != 1 || !(startNum == 1 || startNum == 2)){
+                System.out.println("[ERROR]");
+                inputReStart();
+            }
+        }catch (NoSuchElementException | IllegalStateException ex){
             System.out.println("[ERROR]");
+            inputReStart();
         }
-        return startNum;
+
+        return startInput;
     }
 
     private String inputBallNum(){

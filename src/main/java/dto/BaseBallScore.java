@@ -16,6 +16,9 @@ public class BaseBallScore {
         this.ballCnt = ballCnt;
     }
 
+    /**
+     * 정답 여부를 반환한다.
+     */
     public boolean isSuccess() {
         return strikeCnt == SUCCESS_STRIKE_CNT;
     }
