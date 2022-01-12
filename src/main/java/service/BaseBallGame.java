@@ -10,11 +10,12 @@ import nextstep.utils.Console;
  */
 public class BaseBallGame {
 
-    private BaseBallGame(){}
+    private BaseBallGame() {
+    }
 
     private static final BaseBallGame INSTANCE = new BaseBallGame();
 
-    public static BaseBallGame getInstance(){
+    public static BaseBallGame getInstance() {
         return INSTANCE;
     }
 
