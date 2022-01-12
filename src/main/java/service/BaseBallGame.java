@@ -10,6 +10,14 @@ import nextstep.utils.Console;
  */
 public class BaseBallGame {
 
+    private BaseBallGame(){}
+
+    private static final BaseBallGame INSTANCE = new BaseBallGame();
+
+    public static BaseBallGame getInstance(){
+        return INSTANCE;
+    }
+
     /**
      * 숫자야구 게임 실행
      */
